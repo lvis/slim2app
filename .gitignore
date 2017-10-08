@@ -1,0 +1,9 @@
+.gitignore
+.idea/
+vendor/
+logs/
+!logs/README.md
+templates/cache/
+!templates/cache/README.md
+composer.lock
+composer.phar

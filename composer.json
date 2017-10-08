@@ -1,0 +1,28 @@
+{
+  "name": "lvis/slim2app",
+  "description": "A Slim 2 Framework skeleton application",
+  "keywords": [
+    "microframework",
+    "rest",
+    "router"
+  ],
+  "homepage": "https://github.com/lvis/slim2app",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vitalii Lupu",
+      "email": "vitaliix@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "slim/slim": "2.*",
+    "monolog/monolog": "1.*"
+  },
+  "config": {
+    "process-timeout": 0
+  },
+  "scripts": {
+    "start": "php -S localhost:8080 -t public index.php"
+  }
+}

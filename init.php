@@ -6,8 +6,12 @@ use Monolog\Processor\UidProcessor;
 
 // --------------------------------------Register: Settings
 $app->setName( 'SlimApp' );
-// [Container:  View - PhpRenderer]
-// $app->view( new Slim\Views\PhpRenderer() );
+$app->config( [
+	'templates.path' => __DIR__ . '/templates/', //This config can be omitted because is default one
+	'debug'          => false, // Debug is set to false to demonstrate custom error handling (Monolog)
+] );
+// [Container: View - Twig]
+// $app->view( new \Slim\Views\Twig() );
 // [Container: Logger - Monolog]
 $app->container->singleton( 'log', function () use ( $app ) {
 	$logger = new Logger( $app->getName() );

@@ -16,7 +16,7 @@ $app->config( [
 $app->container->singleton( 'log', function () use ( $app ) {
 	$logger = new Logger( $app->getName() );
 	$logger->pushProcessor( new UidProcessor() );
-	$logger->pushHandler( new StreamHandler( 'logs/app.log', Logger::DEBUG ) );
+	$logger->pushHandler( new StreamHandler( __DIR__ . '/logs/app.log', Logger::DEBUG ) );
 
 	return $logger;
 } );

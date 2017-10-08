@@ -14,5 +14,5 @@ if ( PHP_SAPI == 'cli-server' ) {
 require 'vendor/autoload.php';
 session_start();
 $app = new Slim\Slim();
-require_once 'init.php';
+require __DIR__.'/init.php';
 $app->run();

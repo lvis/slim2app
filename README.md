@@ -11,4 +11,9 @@ Run this command from the directory in which you want to install your new Slim F
 
 You can run application in development with this command:
 
+    php -S localhost:8080 index.php
+    
+or composer one:
+
     php composer.phar start
+    

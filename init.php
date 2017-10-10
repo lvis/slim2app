@@ -1,9 +1,4 @@
 <?php
-
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
-use Monolog\Processor\UidProcessor;
-
 // --------------------------------------Register: Settings
 $app->setName( 'Slim2App' );
 $app->config( [
@@ -11,16 +6,10 @@ $app->config( [
 	'debug'          => false, // Debug is set to false to demonstrate custom error handling (Monolog)
 ] );
 // [Container: View - Twig]
-$viewExtension = "phtml";//Extension must be added on each View Class in display function as convention no configuration
-require __DIR__."/init.twig.view.php";
+$viewExtension = 'phtml';//Extension must be added on each View Class in display function as convention no configuration
+require __DIR__ . '/init.view.twig.php';
 // [Container: Logger - Monolog]
-$app->container->singleton( 'log', function () use ( $app ) {
-	$logger = new Logger( $app->getName() );
-	$logger->pushProcessor( new UidProcessor() );
-	$logger->pushHandler( new StreamHandler( __DIR__ . '/logs/app.log', Logger::DEBUG ) );
-
-	return $logger;
-} );
+require __DIR__ . '/init.logger.monolog.php';
 // --------------------------------------Register: Routes
 $app->get( '/(:name)', function ( $name = "" ) use ( $app, $viewExtension ) {
 	$args = [];

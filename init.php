@@ -11,7 +11,8 @@ $app->config( [
 	'debug'          => false, // Debug is set to false to demonstrate custom error handling (Monolog)
 ] );
 // [Container: View - Twig]
-// $app->view( new \Slim\Views\Twig() );
+$viewExtension = "phtml";//Extension must be added on each View Class in display function as convention no configuration
+require __DIR__."/init.twig.view.php";
 // [Container: Logger - Monolog]
 $app->container->singleton( 'log', function () use ( $app ) {
 	$logger = new Logger( $app->getName() );
@@ -21,7 +22,7 @@ $app->container->singleton( 'log', function () use ( $app ) {
 	return $logger;
 } );
 // --------------------------------------Register: Routes
-$app->get( '/(:name)', function ( $name = "" ) use ( $app ) {
+$app->get( '/(:name)', function ( $name = "" ) use ( $app, $viewExtension ) {
 	$args = [];
 	if ( empty( $name ) == false ) {
 		$args['name'] = $name;
@@ -29,5 +30,5 @@ $app->get( '/(:name)', function ( $name = "" ) use ( $app ) {
 	// Write Log Message
 	$app->getLog()->info( "Executed '/(:name)' route with attribute", $args );
 	// Render View
-	$app->render( 'index.phtml', $args );
+	$app->render( "index.$viewExtension", $args );
 } );

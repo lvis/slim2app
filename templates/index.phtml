@@ -26,10 +26,15 @@
 		<?php if ( isset( $name ) ) : ?>
             <h2>Hello <?= htmlspecialchars( $name ); ?>!</h2>
 		<?php else: ?>
-            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
+            <p>Rendered with PhpRenderer</p>
 		<?php endif; ?>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+			<?php echo isset( $readme ) ? $readme : ''; ?>
+        </div>
     </div>
 </main>
 </body>

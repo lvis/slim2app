@@ -1,6 +1,5 @@
 <?php
 //[Container: View - Twig]
-$viewExtension = "twig";
 $app->view(new \Slim\Views\Twig());
 $app->view->parserOptions = array(
 	'charset' => 'utf-8',

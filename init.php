@@ -6,18 +6,18 @@ $app->config( [
 	'debug'          => false, // Debug is set to false to demonstrate custom error handling (Monolog)
 ] );
 // [Container: View - Twig]
-$viewExtension = 'phtml';//Extension must be added on each View Class in display function as convention no configuration
 require __DIR__ . '/init.view.twig.php';
 // [Container: Logger - Monolog]
 require __DIR__ . '/init.logger.monolog.php';
 // --------------------------------------Register: Routes
-$app->get( '/(:name)', function ( $name = "" ) use ( $app, $viewExtension ) {
+$app->get( '/(:name)', function ( $name = "" ) use ( $app ) {
 	$args = [];
+	$args['readme'] = Parsedown::instance()->parse( file_get_contents( 'README.md' ) );
 	if ( empty( $name ) == false ) {
 		$args['name'] = $name;
 	}
 	// Write Log Message
 	$app->getLog()->info( "Executed '/(:name)' route with attribute", $args );
 	// Render View
-	$app->render( "index.$viewExtension", $args );
+	$app->render( 'index.twig', $args );
 } );

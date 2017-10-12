@@ -19,6 +19,7 @@
     "slim/slim": "2.*",
     "slim/views": "0.*",
     "twig/twig": "1.*",
+    "erusev/parsedown": "dev-master",
     "monolog/monolog": "1.*"
   },
   "config": {
